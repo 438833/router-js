@@ -1,6 +1,6 @@
 ## Router.js
 
-Router.js - это библиотека JavaScript для управления маршрутизацией в веб-приложениях. Обеспечивает простой и гибкий механизм для сопоставления URL-адресов с функциональностью вашего приложения.
+Router.js - это библиотека JavaScript для управления маршрутизацией в веб-приложениях. Она обеспечивает простой и гибкий механизм для сопоставления URL-адресов с функциональностью вашего приложения.
 
 ### Установка
 
@@ -21,71 +21,50 @@ npm install router-js
 #### Определение маршрутов
 
 ```javascript
-Router.map('#/my-home-page').to(
-	function()
-	{
-		console.log('Показываем что-нибудь');
-	}
-);
+Router.map('#/my-home-page').to(function() {
+    console.log('Показываем что-нибудь');
+});
 ```
 
 #### Пользовательские переменные
 
 ```javascript
-Router.map('#/info/:first/:second').to(
-	function()
-	{
-		console.log(this.getParam('first'));
-		console.log(this.getParam('second'));
-	}
-);
+Router.map('#/info/:first/:second').to(function() {
+    console.log(this.getParam('first'));
+    console.log(this.getParam('second'));
+});
 ```
 
 #### Необязательные параметры
 
 ```javascript
-Router.map('#/info/:first(/:second)').to(
-	function()
-	{
-		console.log(this.getParam('first'));
-	}
-);
+Router.map('#/info/:first(/:second)').to(function() {
+    console.log(this.getParam('first'));
+});
 ```
 
 #### Подстановочные параметры
 
 ```javascript
-Router.map('#/params/*').to(
-	function()
-	{
-		console.log(this.getParam('code'));
-	}
-);
+Router.map('#/params/*').to(function() {
+    console.log(this.getParam('code'));
+});
 ```
 
 #### Предварительные и постфильтры
 
 ```javascript
 Router.map('#/params/*')
-    .before(
-		function()
-		{ 
-			// Выполнится перед основным действием
-			// Возврат false предотвратит выполнение основного действия
-		}
-	)
-    .to(
-		function()
-		{
-			// Основное действие
-		}
-	)
-    .after(
-		function()
-		{ 
-			// Выполнится при переходе с этого маршрута на другой 
-		}
-	);
+    .before(function() { 
+        // Выполнится перед основным действием
+        // Возврат false предотвратит выполнение основного действия
+    })
+    .to(function() {
+        // Основное действие
+    })
+    .after(function() { 
+        // Выполнится при переходе с этого маршрута на другой 
+    });
 ```
 
 ### Другие методы
